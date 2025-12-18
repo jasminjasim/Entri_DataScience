@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bank Marketing Prediction Model</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+        }
+        .container {
+            width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            margin-top: 30px;
+            border-radius: 8px;
+        }
+        h2 {
+            text-align: center;
+        }
+        label {
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin: 6px 0 15px 0;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px;
+            border: none;
+            width: 100%;
+            cursor: pointer;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background: #e9ecef;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <h2>Bank Marketing Prediction</h2>
+
+    <form method="POST" action="/predict_form">
+
+        <label>Age</label>
+        <input type="number" name="age" required>
+
+        <label>Job</label>
+        <select name="job">
+            <option>management</option>
+            <option>technician</option>
+            <option>entrepreneur</option>
+            <option>blue-collar</option>
+            <option>admin.</option>
+            <option>services</option>
+            <option>self-employed</option>
+            <option>retired</option>
+            <option>student</option>
+            <option>unemployed</option>
+            <option>housemaid</option>
+            <option>unknown</option>
+        </select>
+
+        <label>Marital Status</label>
+        <select name="marital">
+            <option>married</option>
+            <option>single</option>
+            <option>divorced</option>
+        </select>
+
+        <label>Education</label>
+        <select name="education">
+            <option>tertiary</option>
+            <option>secondary</option>
+            <option>primary</option>
+            <option>unknown</option>
+        </select>
+
+        <label>Credit in Default</label>
+        <select name="default">
+            <option>no</option>
+            <option>yes</option>
+        </select>
+
+        <label>Balance</label>
+        <input type="number" name="balance" required>
+
+        <label>Housing Loan</label>
+        <select name="housing">
+            <option>yes</option>
+            <option>no</option>
+        </select>
+
+        <label>Personal Loan</label>
+        <select name="loan">
+            <option>no</option>
+            <option>yes</option>
+        </select>
+
+        <label>Contact Type</label>
+        <select name="contact">
+            <option>cellular</option>
+            <option>telephone</option>
+            <option>unknown</option>
+        </select>
+
+        <label>Day</label>
+        <input type="number" name="day" min="1" max="31" required>
+
+        <label>Month</label>
+        <select name="month">
+            <option>jan</option><option>feb</option><option>mar</option>
+            <option>apr</option><option>may</option><option>jun</option>
+            <option>jul</option><option>aug</option><option>sep</option>
+            <option>oct</option><option>nov</option><option>dec</option>
+        </select>
+
+        <label>Current Campaign Contacts</label>
+        <input type="number" name="campaign" required>
+
+        <label>Pdays:- Time gap since last contact</label>
+        <input type="number" name="pdays" required>
+
+        <label>Previous Campaign Contacts:- Count of past contacts</label>
+        <input type="number" name="previous" required>
+
+        <label>Previous Campaign Outcome</label>
+        <select name="poutcome">
+            <option>unknown</option>
+            <option>failure</option>
+            <option>success</option>
+            <option>other</option>
+        </select>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction %}
+    <div class="result">
+        <h3>Prediction: {{ prediction }}</h3>
+        <p>Probability: {{ probability }}</p>
+    </div>
+    {% endif %}
+
+    {% if explanations %}
+<div class="result">
+    <h3>Why this prediction?</h3>
+    <ul>
+        {% for exp in explanations %}
+        <li>{{ exp }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+
+</div>
+</body>
+</html>
