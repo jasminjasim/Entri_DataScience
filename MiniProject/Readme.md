@@ -81,3 +81,37 @@ Both models were evaluated on a stratified train-test split (80% train, 20% test
 ## Saved Model
 - The trained XGBoost pipeline (including preprocessing and SMOTE) is saved as:
 models/bank_marketing_model.pkl
+
+## Accuracy
+Classification Report for XGboost:
+               precision    recall  f1-score   support
+
+           0       0.91      0.97      0.94      7985
+           1       0.59      0.29      0.39      1058
+
+    accuracy                           0.89      9043
+   macro avg       0.75      0.63      0.67      9043
+weighted avg       0.87      0.89      0.88      9043
+
+Confusion Matrix for XGboost:
+ [[7777  208]
+ [ 753  305]]
+Accuracy Score for XGboost:
+ 0.8937299568727193
+Classification Report for SVC:
+               precision    recall  f1-score   support
+
+           0       0.94      0.88      0.91      7985
+           1       0.37      0.55      0.44      1058
+
+    accuracy                           0.84      9043
+   macro avg       0.65      0.71      0.67      9043
+weighted avg       0.87      0.84      0.85      9043
+
+Confusion Matrix for SVC:
+ [[7010  975]
+ [ 480  578]]
+Accuracy Score for SVC:
+ 0.8391020678978215
+ROC-AUC Score: 0.7847165585756848
+ROC-AUC Score for SVC: 0.7746648666627999
