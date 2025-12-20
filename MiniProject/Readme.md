@@ -115,3 +115,7 @@ Accuracy Score for SVC:
  0.8391020678978215
 ROC-AUC Score: 0.7847165585756848
 ROC-AUC Score for SVC: 0.7746648666627999
+
+## Screenshot
+<img width="332" height="688" alt="image" src="https://github.com/user-attachments/assets/23204ae3-ebb2-45e3-9953-9d02fa0ed3a7" />
+
